@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Form </title>
+    <script src="angular.js"></script>
+</head>
+<body ng-app="myApp">
+    <div ng-controller="loginController">
+        <h2 style="margin: 0%;">Login Form</h2>
+        <form name="loginForm" novalidate>
+            <label style="font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;">Username:</label>
+            <input type="text" ng-model="user.username" name="Username" required>
+            <span ng-show="loginForm.username.$error && loginForm.username.$dirty">Username is required</span><br>
+            
+            
+            <label style="font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;">Password:</label>
+            <input type="text" ng-model="user.Password" name="Password" ng-pattern="(/^?=.[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/" required>
+            <span ng-show="loginForm.Password.$error && loginForm.Password.$dirty">Password is required</span>
+            <span ng-show="loginForm.Password.$error && loginForm.Password.$pattern">Password Should be Alphanumeric</span>
+            <br>
+            <button ng-click="login()" ng-disabled="loginForm.$invalid">Login</button>
+        </form>
+        <div ng-show="isLogged" >
+            <p>Login Successfull !Welcome {{user.username}}</p>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>

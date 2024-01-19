@@ -1,0 +1,9 @@
+angular.module("myApp",[]).controller(
+    "loginController",function($scope){
+        $scope.user={username:"",Password:""};
+        $scope.isLogged=false;
+        $scope.login=function(){
+            $scope.isLogged=true;
+        };
+    }
+);
